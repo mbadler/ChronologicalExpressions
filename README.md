@@ -27,12 +27,13 @@ This expression will find any session where the user went to the shopping cart p
 # Proposed Spec
 
 **Elements**
-Patterns are composed of elements seperated by line breaks
-An element can be a Selector or a Group
-Selectors are positioned at the begining of the group indentation level
-Groups start with a grouping mark and end with a grouping mark (for example the ( ) marks )
-after each element you can place a quantfier (similiar to the regex quantifiers)
-Additionally you can add filter directives to a selector - this will modify the selector so that the selector will only match if the filter matches
+
+* Patterns are composed of elements seperated by line breaks
+* An element can be a Selector or a Group
+* Selectors are positioned at the begining of the group indentation level
+* Groups start with a grouping mark and end with a grouping mark (for example the ( ) marks )
+* after each element you can place a quantfier (similiar to the regex quantifiers)
+* Additionally you can add filter directives to a selector - this will modify the selector so that the selector will only match if the filter matches
 
 
 **Direct Selector**
