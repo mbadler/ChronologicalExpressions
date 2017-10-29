@@ -1,6 +1,9 @@
 # Chronological Expressions
 A Event Pattern Matching language
 
+[ChronEx Pattern Language Specification](https://github.com/mbadler/ChronologicalExpressions/wiki/ChronEx-Pattern-Specification)
+[Reference Implementation Development Roadmap](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map)
+
 ## The Problem
 When trying to extract events from a log, its easy to pinpoint a single entry , but it is much harder to relate this single entry to a scope that would encompass a entire sequence of events. There is no real way to express a pattern of sequences of log entries that would signify that a significant event happened. 
 
@@ -24,118 +27,4 @@ $ // end of session
 
 This expression will find any session where the user went to the shopping cart page - but by the time the session timed out there were no additional visits to the confirm page again
 
-# Proposed Spec
 
-**Elements**
-
-* Patterns are composed of elements separated by line breaks
-* An element can be a Selector or a Group
-* Selectors are positioned at the beginning of the group indentation level
-* Groups start with a grouping mark and end with a grouping mark (for example the ( ) marks )
-* after each element you can place a quantifier (similar to the regex quantifiers)
-* Additionally you can add filter directives to a selector - this will modify the selector so that the selector will only match if the filter matches
-
-***Selectors***
-
-* Selectors are items that match and event
-* Only one selector per line
-
-**Direct Selector**
-
-A direct selector is a selector which appears in the pattern directly
-
-For example this selector will match the Page_Loaded event as is
-~~~
-Page_loaded
-~~~
-
-
-**Wildcard Selector**
-
-A wildcard selector is denoted with a . and will match any event
-
-Example: This pattern will match a Page_loaded event followed by any single event followed by a Page_unloaded event
-~~~
-Page_Loaded
-.
-Page_Unloaded
-~~~
-
-**Regex Selector**
-
-A selector can be a RegEx expression that is matched against selector names
-regex selectors are defined similar to javascript regex literals by surrounding it with a // marks
-
-Example: This pattern will match a page load event followed by any event named click followed a page unloaded event
-
-~~~
-Page_Loaded
-/Page_.*Click/
-Page_Unloaded
-~~~
-
-**Selector Quantifiers**
-
-Similar to regex , a selector can have a quantifier that will match only if the event match the quantity specified
-
-Example: This pattern will only match a linkclicked event that happens at least 3 but not more than 5 times in a row
-~~~
-Link_Clicked{3,5}
-~~~
-
-**Negated Selector**
-
-A negated selector will match any event next in the list if it is not the specified events. it is denoted with a ^ 
-
-Example: This pattern will match any link click that is not immedialty followed with a page load (unless the seesion ended)
-~~~
-Link_Clicked
-^Page_Load
-~~~
-
-***Groups***
-
-Groups allow you to group selectors together for logical operations. unlike regex , groups in ChronEx are more expressive due to the nature of the expression layout (single char vs line delimited).
-
-Groups are always indented with the beginning braces inline with the elements above and the group contents indented with at least one tab or space
-
-**And group**
-
-An and group starts with a open pare and closes with a close paren. The group will only match if the full sequence of the group matches
-
-Example: This pattern will match a sequence of events of page_load and then 2 linked_clicks
-~~~
-(
-  Page_Load
-  Link_clicked
-  Link_clicked
-)
-~~~
-
-**Or group**
-
-An or group starts with a open curly brace and ends with a close curly brace. The group will match if any of the selectors match
-
-Example: This pattern will match a Page_load followed either by a Link_clicked and then immediatly a Page_unload or followed by a add_to_cart. Note the sub and group
-~~~
-Page_Load
-{
-  (
-    Link_Clicked
-    Page_Unload
-   )
-   Add_To_Cart
-}
-~~~
-
-**Negating a group**
-
-Similar to a selector a group can be negated by prefacing its opening bracket with a caret.
-
-Example: this pattern will match a Page_Load that is not immediately followed by a Link_Cliked or a Add_to_Cart
-~~~
-Page_Load
-^{
-  Link_Clicked
-  Add_to_Cart
-}
