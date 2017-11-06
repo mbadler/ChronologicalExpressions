@@ -1,0 +1,16 @@
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.Tests.deps.json
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.Tests.runtimeconfig.json
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.Tests.runtimeconfig.dev.json
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.Tests.dll
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.Tests.pdb
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.dll
+C:\proj\ChronEx\ChronEx.Tests\bin\Debug\netcoreapp2.0\ChronEx.pdb
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.csprojResolveAssemblyReference.cache
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.csproj.CoreCompileInputs.cache
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.AssemblyInfoInputs.cache
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.AssemblyInfo.cs
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.dll
+C:\proj\ChronEx\ChronEx.Tests\obj\Debug\netcoreapp2.0\ChronEx.Tests.pdb
