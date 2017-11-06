@@ -21,6 +21,10 @@ To understand this in regex terms: Searching text is an inherently ordered opera
 
 Regex allows us to define more complicated searching sequences, so for example a RegEx of "^A{2}$" would tell us to start at the beginning of the string and then move forward and match 2 A's and then move forward and make sure that its the end of the line
 
+## Is this a Machine Learning qlgorithim?
+
+No, ChronEx would be considered a "Expert System" algorithim, wherin a domain expert knows exactly the pattern of events they are looking for. ChronEx allows the expert to express his search pattern in a clear and cocise manner. Instead of having to write mutli join sql statments or implement a state machine in code, chronex allows the expert to map out what he knows the patteren should look like.
+
 ## Example
 Suppose we had a issue , we know that many customers are adding stuff to shopping carts but they are not checking out, we need to find out why. We want to query the logs (in this case per session) and find which sequence of logs per session meet the criteria of a dropped sale. Using ChronEx we would be able to express what we are looking for something like this
 
