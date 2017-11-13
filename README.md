@@ -7,7 +7,7 @@ A Event Pattern Matching language
 
 ## Releases
 
-C# reference implementation 0.1 has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
+C# reference implementation 0.2 (Quoted Selectors and Regex Selectors) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
 
 ## The Problem
 When trying to extract events from a log, its easy to pinpoint a single entry , but it is much harder to relate this single entry to a scope that would encompass a entire sequence of events. There is no real way to express a pattern of sequences of log entries that would signify that a significant event happened. 
