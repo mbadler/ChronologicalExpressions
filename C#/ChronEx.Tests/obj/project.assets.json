@@ -5646,11 +5646,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\proj\\ChronEx\\ChronEx.Tests\\ChronEx.Tests.csproj",
+      "projectUniqueName": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx.Tests\\ChronEx.Tests.csproj",
       "projectName": "ChronEx.Tests",
-      "projectPath": "C:\\proj\\ChronEx\\ChronEx.Tests\\ChronEx.Tests.csproj",
+      "projectPath": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx.Tests\\ChronEx.Tests.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\proj\\ChronEx\\ChronEx.Tests\\obj\\",
+      "outputPath": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5669,8 +5669,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\proj\\ChronEx\\ChronEx\\ChronEx.csproj": {
-              "projectPath": "C:\\proj\\ChronEx\\ChronEx\\ChronEx.csproj"
+            "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx\\ChronEx.csproj": {
+              "projectPath": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx\\ChronEx.csproj"
             }
           }
         }

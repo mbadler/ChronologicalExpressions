@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ChronEx.Models.AST
 {
@@ -39,5 +40,36 @@ namespace ChronEx.Models.AST
             return true;
         }
     }
+
+    public class RegexSelector : Selector
+    {
+
+        public string MatchPattern { get; set; }
+
+        Regex rgx = null;
+        internal override IsMatchResults IsMatch(IChronologicalEvent chronevent)
+        {
+            if(IsRegexMatch(chronevent.EventName))
+            {
+                return IsMatchResults.IsMatch;
+            }
+            return IsMatchResults.IsNotMatch;
+        }
+
+        internal override bool IsPotentialMatch(IChronologicalEvent chronevent)
+        {
+            return IsRegexMatch(chronevent.EventName);
+        }
+
+        bool IsRegexMatch(string Text)
+        {
+            if(rgx == null)
+            {
+                rgx = new Regex(MatchPattern);
+            }
+            return rgx.IsMatch(Text);
+        }
+    }
+
 
 }

@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\proj\\ChronEx\\ChronEx\\ChronEx.csproj",
+      "projectUniqueName": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx\\ChronEx.csproj",
       "projectName": "ChronEx",
-      "projectPath": "C:\\proj\\ChronEx\\ChronEx\\ChronEx.csproj",
+      "projectPath": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx\\ChronEx.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\proj\\ChronEx\\ChronEx\\obj\\",
+      "outputPath": "C:\\proj\\Repos\\ChronologicalExpressions\\C#\\ChronEx\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

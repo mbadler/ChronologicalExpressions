@@ -78,13 +78,24 @@ ItemPage.Render
 
         }
 
+
+        [TestMethod]
+        public void RegexSelectorMatches()
+        {
+            var events = GetBasicCheckoutEvents();
+            var script =
+            @"/(Catalog|HomePage)\.Load/";
+            Assert.AreEqual(5, ChronEx.MatchCount(script, events));
+        }
+
+
         public IEnumerable<ChronologicalEvent> GetBasicCheckoutEvents()
         {
             var s =
            @"Session.Start,10/17/2017 0:00
 HomePage.Load,10/17/2017 0:00
 HomePage.Render,10/17/2017 0:01
-Homepage.Link.Clicked,10/17/2017 0:02
+HomePage.Link.Clicked,10/17/2017 0:02
 Catalog.Load,10/17/2017 0:03
 Catalog.Render,10/17/2017 0:04
 Catalog.Next.Clicked,10/17/2017 0:05
@@ -102,7 +113,7 @@ ShoppingCart.Render,10/17/2017 0:16
 ShoppingCart.CheckoutNow.Clicked,10/17/2017 0:17
 HomePage.Load,10/17/2017 0:18
 HomePage.Render,10/17/2017 0:19
-Homepage.Link.Clicked,10/17/2017 0:20
+HomePage.Link.Clicked,10/17/2017 0:20
 Catalog.Load,10/17/2017 0:21
 Catalog.Render,10/17/2017 0:22
 Catalog.Next.Clicked,10/17/2017 0:23
