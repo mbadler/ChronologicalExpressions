@@ -1603,7 +1603,7 @@
       },
       "ChronEx/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
+        "framework": ".NETStandard,Version=v2.0",
         "compile": {
           "bin/placeholder/ChronEx.dll": {}
         },
@@ -5694,7 +5694,7 @@
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0",
+            "version": "2.0",
             "autoReferenced": true
           },
           "Microsoft.NET.Test.Sdk": {

@@ -286,8 +286,9 @@ namespace ChronEx.Parser
             }
 
             //select and capture the token based onthe mapping and set it back to unknown
+            var b = Current;
             Select();
-            CaptureToken(LexedToken.charToToken_Dictionary[Current]);
+            CaptureToken(LexedToken.charToToken_Dictionary[b]);
             PersumedTokenType = LexedTokenType.UNKNOWN;
             return true;
         }

@@ -10,7 +10,8 @@ namespace ChronEx.Parser
         public static Dictionary<char, LexedTokenType> charToToken_Dictionary = new Dictionary<char, LexedTokenType>()
         {
             {' ',LexedTokenType.WHITESPACE },
-            {'\t',LexedTokenType.TAB }
+            {'\t',LexedTokenType.TAB },
+            {'!',LexedTokenType.EXCLAMATION}
         };
 
         public LexedToken(LexedTokenType TokenType,string TokenText,int LineNumber,int Position)
@@ -19,6 +20,15 @@ namespace ChronEx.Parser
             this.TokenText = TokenText;
             this.LineNumber = LineNumber;
             this.Position = Position;
+        }
+
+        public LexedToken(LexedTokenType TokenType)
+        {
+            this.TokenType = TokenType;
+            this.TokenText = "";
+            this.LineNumber = 0;
+            this.Position = 0;
+
         }
 
         public LexedTokenType TokenType { get; }
@@ -37,6 +47,8 @@ namespace ChronEx.Parser
         UNKNOWN,
         WHITESPACE,
         TAB,
-        EOF
+        EOF,
+        EXCLAMATION,
+        STATEMENTEND
     }
 }

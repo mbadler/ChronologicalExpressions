@@ -78,6 +78,16 @@ ItemPage.Render
 
         }
 
+        [TestMethod]
+        public void NegationNegatesAMatch()
+        {
+            var events = GetBasicCheckoutEvents();
+            var script =
+@"Homepage.Link.Clicked
+!Catalog.Load";
+
+            Assert.AreEqual(1, ChronEx.MatchCount(script, events));
+        }
 
         [TestMethod]
         public void RegexSelectorMatches()

@@ -15,6 +15,10 @@ namespace ChronEx.Parser
         protected IEnumerable<IChronologicalEvent> EventList { get; }
 
         protected List<Tracker> trackList = new List<Tracker>();
+        /// <summary>
+        /// Trackers that were found to have results and the captures
+        /// </summary>
+        protected List<Tracker> CapturedtrackList = new List<Tracker>();
 
         // for eventual streaming implementation
         public Runner()
@@ -33,13 +37,13 @@ namespace ChronEx.Parser
         //For the future we can look at creating a (Pattern Directed Engine)
         public virtual bool IsMatch()
         {
-            return PerformMatchCount(true) > 0;
+            return PerformMatch(true,false) > 0;
         }
 
         //runs thru the events and returns the number of matches found
         public virtual int MatchCount()
         {
-            return PerformMatchCount(false) ;
+            return PerformMatch(false,false) ;
         }
 
         /// <summary>
@@ -47,7 +51,7 @@ namespace ChronEx.Parser
         /// </summary>
         /// <param name="ShortCircuit">Indicates to return as soon as a match is found</param>
         /// <returns>if short circuit 1 for match 0 for no matches , if not short circuit will return the number of matches found</returns>
-        protected int PerformMatchCount(bool ShortCircuit)
+        protected int PerformMatch(bool ShortCircuit,bool Store)
         {
             // get the first element this is the lowest level filter to launching a tracker
             var getlemes = tree.GetElements();
@@ -86,7 +90,7 @@ namespace ChronEx.Parser
                     // submit to the tracker for processing
                     // since this is only the match function
                     // if any of the trackers have a positive result - return right away
-                    var m = trk.ProcessEvent(even);
+                    var m = trk.ProcessEvent(even,Store);
                     if (m == TrackerProcessResult.IsMatch)
                     {
                         if (ShortCircuit)
@@ -99,6 +103,7 @@ namespace ChronEx.Parser
                             
                             matchcount++;
                             _removeList.Add(trk);
+                            CapturedtrackList.Add(trk);
                         }
                         
                     }

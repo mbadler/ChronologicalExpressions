@@ -10,6 +10,7 @@ namespace ChronEx.Parser
     {
         private ParsedTree tree;
         IEnumerator<Element> _evntEnum = null;
+        private List<IChronologicalEvent> StoredList = null;
 
         public Tracker(ParsedTree tree)
         {
@@ -20,7 +21,7 @@ namespace ChronEx.Parser
             _evntEnum.MoveNext();
         }
 
-        internal TrackerProcessResult ProcessEvent(IChronologicalEvent even)
+        internal TrackerProcessResult ProcessEvent(IChronologicalEvent even,bool Store)
         {
             //check the match
             var res = _evntEnum.Current.IsMatch(even);
@@ -33,7 +34,15 @@ namespace ChronEx.Parser
             //continue will not be implemented yet , no need ot hadle now
 
             //if the element matched then:
-           
+           //if we should store then store it
+           if(Store && StoredList == null)
+            {
+                StoredList = new List<IChronologicalEvent>();
+            }
+           if(Store)
+            {
+                StoredList.Add(even);
+            }
                 //if this is the last element in the tree
                 //then return that we sucessfully matched the whole tree
                 if(!_evntEnum.MoveNext())

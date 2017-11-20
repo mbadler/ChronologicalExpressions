@@ -31,5 +31,7 @@ namespace ChronEx
             var runner = new Runner(tree, Events);
             return runner.MatchCount();
         }
+
+        
     }
 }

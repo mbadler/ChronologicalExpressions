@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronEx", "ChronEx\ChronEx.csproj", "{3C723BBB-9038-4F29-B153-25D5E8B911BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronEx", "ChronEx\ChronEx.csproj", "{3C723BBB-9038-4F29-B153-25D5E8B911BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronEx.Tests", "ChronEx.Tests\ChronEx.Tests.csproj", "{344C40DD-EE1B-4D44-B26D-2D8E49734B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronEx.Tests", "ChronEx.Tests\ChronEx.Tests.csproj", "{344C40DD-EE1B-4D44-B26D-2D8E49734B09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
