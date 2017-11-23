@@ -37,13 +37,22 @@ namespace ChronEx.Parser
         //For the future we can look at creating a (Pattern Directed Engine)
         public virtual bool IsMatch()
         {
-            return PerformMatch(true,false) > 0;
+            return PerformMatch(true,false).Item2 > 0;
         }
 
         //runs thru the events and returns the number of matches found
         public virtual int MatchCount()
         {
-            return PerformMatch(false,false) ;
+            return PerformMatch(false,false).Item2 ;
+        }
+
+        /// <summary>
+        /// Returns a list containing the list of matches found
+        /// </summary>
+        /// <returns></returns>
+        public virtual List<ChronExMatch> Matches()
+        {
+            return PerformMatch(false, true).Item1;
         }
 
         /// <summary>
@@ -51,20 +60,20 @@ namespace ChronEx.Parser
         /// </summary>
         /// <param name="ShortCircuit">Indicates to return as soon as a match is found</param>
         /// <returns>if short circuit 1 for match 0 for no matches , if not short circuit will return the number of matches found</returns>
-        protected int PerformMatch(bool ShortCircuit,bool Store)
+        protected (List<ChronExMatch>,int) PerformMatch(bool ShortCircuit,bool Store)
         {
             // get the first element this is the lowest level filter to launching a tracker
             var getlemes = tree.GetElements();
             if (!getlemes.Any())
             {
-                return 0;
+                return (null,0);
             }
             var firstElem = getlemes.First();
 
             //if there are no elements then its of course not a mathc
             if (firstElem == null)
             {
-                return 0;
+                return (null, 0);
             }
 
             var matchcount = 0;
@@ -95,7 +104,7 @@ namespace ChronEx.Parser
                     {
                         if (ShortCircuit)
                         {
-                            return 1;
+                            return (null,1);
                         }
                         else
                         {
@@ -103,7 +112,8 @@ namespace ChronEx.Parser
                             
                             matchcount++;
                             _removeList.Add(trk);
-                            CapturedtrackList.Add(trk);
+                            if (Store)
+                                CapturedtrackList.Add(trk);
                         }
                         
                     }
@@ -123,7 +133,20 @@ namespace ChronEx.Parser
             }
 
             // at this point we have run out of events and non of the trackers have claimed sucess so return false
-            return matchcount;
+            if(Store)
+            {
+                var lst = new List<ChronExMatch>();
+                foreach (var item in CapturedtrackList)
+                {
+                    lst.Add(new ChronExMatch()
+                    {
+                        CapturedEvents = item.StoredList
+                    });
+
+                }
+                return (lst, matchcount);
+            }
+            return (null,matchcount);
         }
 
         private void StartNewTracker(ParsedTree tree)

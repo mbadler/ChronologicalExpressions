@@ -98,6 +98,18 @@ ItemPage.Render
             Assert.AreEqual(5, ChronEx.MatchCount(script, events));
         }
 
+        [TestMethod]
+        public void MetchesMethodReturnsMatches()
+        {
+            var events = GetBasicCheckoutEvents();
+            var script =
+            @"/(Catalog|HomePage)\.Load/
+.";
+            var matches = ChronEx.Matches(script, events);
+
+            Assert.AreEqual(5, matches.Count);
+            Assert.AreEqual(2, matches[0].CapturedEvents.Count);
+        }
 
         public IEnumerable<ChronologicalEvent> GetBasicCheckoutEvents()
         {

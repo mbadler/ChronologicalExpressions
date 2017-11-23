@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronEx", "ChronEx\ChronEx.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronEx.Tests", "ChronEx.Tests\ChronEx.Tests.csproj", "{344C40DD-EE1B-4D44-B26D-2D8E49734B09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronExQuery", "ChronExQuery\ChronExQuery.csproj", "{463B90C0-65CA-4BE4-B19C-E4C86442292F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{344C40DD-EE1B-4D44-B26D-2D8E49734B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344C40DD-EE1B-4D44-B26D-2D8E49734B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344C40DD-EE1B-4D44-B26D-2D8E49734B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{463B90C0-65CA-4BE4-B19C-E4C86442292F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463B90C0-65CA-4BE4-B19C-E4C86442292F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463B90C0-65CA-4BE4-B19C-E4C86442292F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463B90C0-65CA-4BE4-B19C-E4C86442292F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

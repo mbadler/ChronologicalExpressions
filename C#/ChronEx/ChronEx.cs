@@ -32,6 +32,16 @@ namespace ChronEx
             return runner.MatchCount();
         }
 
-        
+        public static List<ChronExMatch> Matches(string ChronExStatment, IEnumerable<IChronologicalEvent> Events)
+        {
+            //get a prser and generate the parsed tree
+            var prs = new ChronExParser();
+            var tree = prs.ParsePattern(ChronExStatment);
+            //create a runner and run the statment and events
+            var runner = new Runner(tree, Events);
+            return runner.Matches();
+        }
+
+
     }
 }

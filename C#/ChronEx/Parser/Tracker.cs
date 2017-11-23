@@ -10,7 +10,7 @@ namespace ChronEx.Parser
     {
         private ParsedTree tree;
         IEnumerator<Element> _evntEnum = null;
-        private List<IChronologicalEvent> StoredList = null;
+        public List<IChronologicalEvent> StoredList = null;
 
         public Tracker(ParsedTree tree)
         {
