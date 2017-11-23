@@ -7,7 +7,13 @@ A Event Pattern Matching language
 
 ## Releases
 
-C# reference implementation 0.3 (Negated Selectors) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
+C# reference implementation 0.3.1 (Matches function and Pattern Expression Query Editor) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
+
+### ChronExQuery  - _Pattern Expression Querying Editor_
+
+There is a small simple pattern expression query editor application included in this repository based on the c# reference implementation. It allows you to paste a dataset and then query patterns against the data. [Direct link](https://github.com/mbadler/ChronologicalExpressions/tree/master/C%23/ChronExQuery) to the application.
+
+Currently included with query editor is a dataset featuring a lifecycle events log of daily actions of a person. The log has been adapted from https://doi.org/10.4121/uuid:01eaba9f-d3ed-4e04-9945-b8b302764176
 
 ## The Problem
 When trying to extract events from a log, its easy to pinpoint a single entry , but it is much harder to relate this single entry to a scope that would encompass a entire sequence of events. There is no real way to express a pattern of sequences of log entries that would signify that a significant event happened. 
@@ -30,7 +36,7 @@ Suppose we had a issue , we know that many customers are adding stuff to shoppin
 
 ~~~
 ShoppingCart.Load  //Event signifies that the user viewed the shopping cart
-^Confirm.Load* // zero or more no Confirmation load events
+!Confirm.Load* // zero or more no Confirmation load events
 $ // end of session
 ~~~
 
