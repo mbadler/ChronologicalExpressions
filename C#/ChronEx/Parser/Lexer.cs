@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace ChronEx.Parser
@@ -83,6 +84,11 @@ namespace ChronEx.Parser
                             LexDelimitedText();
                             break;
                         }
+                    case LexedTokenType.NUMBER:
+                        {
+                            LexNumber();
+                            break;
+                        }
                     case LexedTokenType.NEWLINE:
                         break;
                     case LexedTokenType.BOF:
@@ -100,6 +106,45 @@ namespace ChronEx.Parser
             }
             //Always add a EOF token
             CaptureToken(LexedTokenType.EOF);
+        }
+
+        private void LexNumber()
+        {
+            //if the next char is a ending (line , space tab or special char)
+            // then allow this function to lex it and exit
+            if (LexForTokenEndingChar(LexedTokenType.NUMBER))
+            {
+                return;
+            }
+
+            //if its a . then we should still accept it for decimal however we need to esure that
+            //there is at least 1 digit after that
+            if(Current=='.')
+            {
+                //first check the captured buffer to make sure we dont have a . yet
+
+                if(buffer.ToString().Contains("."))
+                {
+                    throwParserException("Unexpected Dot");
+                }
+
+                //peek ahead and throw if the next char is not a number
+                var next = Peek();
+                 
+                if(!next.HasValue || !Char.IsDigit(next.Value))
+                {
+                    throwParserException("Uexpected Dot");
+                }
+            }
+
+            //if we got here then we know its not a special char,breaking char or dot
+            //so it needs to be a number
+            if(!Char.IsDigit(Current)&& Current != '.')
+            {
+                throwParserException("Unexpected char In Number");
+            }
+            //else just add it to the buffer
+            Select();
         }
 
         private void LexDelimitedText()
@@ -133,27 +178,50 @@ namespace ChronEx.Parser
 
         private void LexText()
         {
-            // Text will just select up to a space or new new line
+            
 
-            // if its a new line char - send it to the new line capturer
-            if(Current == '\n'|| Current=='\r')
+            //if the next char is a ending (line , space tab or special char)
+            // then allow this function to lex it and exit
+            if(LexForTokenEndingChar(LexedTokenType.TEXT))
             {
-                CaptureToken(LexedTokenType.TEXT);
-                CaptureNewLine();
-                return;
-            }
-
-            // if its a space or tab then captur the current value
-            if(Current==' ' || Current == '\t')
-            {
-                //capture the buffer but dont' skip the white space - allow it to go back into the loop for processing
-                CaptureToken(LexedTokenType.TEXT);
-                PersumedTokenType = LexedTokenType.UNKNOWN;
                 return;
             }
 
             //else just add it to the buffer
             Select();
+        }
+
+        private bool LexForTokenEndingChar(LexedTokenType RecordAsType)
+        {
+            // if its a new line char - send it to the new line capturer
+            if (Current == '\n' || Current == '\r')
+            {
+                CaptureToken(RecordAsType);
+                CaptureNewLine();
+                return true;
+            }
+
+            // if its a space or tab then captur the current value
+            if (Current == ' ' || Current == '\t')
+            {
+                //capture the buffer but dont' skip the white space - allow it to go back into the loop for processing
+                CaptureToken(RecordAsType);
+                PersumedTokenType = LexedTokenType.UNKNOWN;
+                return true;
+            }
+
+            //next we check for any of the special chars - if found then close shop and let the the
+            //lexSpecialChar function take care of it
+            if (LexedToken.charToToken_Dictionary.ContainsKey(Current))
+            {
+                CaptureToken(RecordAsType);
+                PersumedTokenType = LexedTokenType.UNKNOWN;
+                LexSpecialChars();
+                return true;
+            }
+
+            //its not a token ending char - let teh caller deal with it
+            return false;
         }
 
         private void LexRegex()
@@ -204,7 +272,7 @@ namespace ChronEx.Parser
 
         private void throwParserException(string v)
         {
-            throw new NotImplementedException();
+            throw new ParserException(v);
         }
 
         //moves the lookahead pointer -1 backwords
@@ -264,6 +332,16 @@ namespace ChronEx.Parser
                 PersumedTokenType = LexedTokenType.DELIMITEDTEXT;
                 return;
             }
+
+            //if its a number
+            if(Char.IsDigit(Current))
+            {
+                Select();
+                PersumedTokenType = LexedTokenType.NUMBER;
+                return;
+            }
+
+
             //see if its one of the specila chars we have mappings for
             if(!LexSpecialChars())
             {
@@ -354,6 +432,23 @@ namespace ChronEx.Parser
         }
     }
 
+    [Serializable]
+    public class ParserException : Exception
+    {
+        public ParserException()
+        {
+        }
 
-    
+        public ParserException(string message) : base(message)
+        {
+        }
+
+        public ParserException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected ParserException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+    }
 }

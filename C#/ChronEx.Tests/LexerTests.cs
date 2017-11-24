@@ -117,5 +117,85 @@ def");
 
 
         }
+
+        [TestMethod]
+        public void Lex_Number_ReturnsNumber()
+        {
+            var s = "1234567 ABC";
+            var n = new Lexer(s);
+
+            var res = n.returnlist;
+            Assert.AreEqual(4, res.Count);
+            Assert.AreEqual(LexedTokenType.NUMBER, res[0].TokenType);
+            Assert.AreEqual("1234567", res[0].TokenText);
+
+        }
+
+        [TestMethod]
+        public void Lex_Number_SpecialCharBreaksNumberEvenIfAttached()
+        {
+            var s = "1234567{}ABC";
+            var n = new Lexer(s);
+
+
+
+            var res = n.returnlist;
+            Assert.AreEqual(5, res.Count);
+            Assert.AreEqual(LexedTokenType.NUMBER, res[0].TokenType);
+            Assert.AreEqual("1234567", res[0].TokenText);
+            Assert.AreEqual(LexedTokenType.OPENCURLY, res[1].TokenType);
+
+
+        }
+
+        [TestMethod]
+        public void Lex_Number_DecimalNumbersCaptureOK()
+        {
+            var s = "12345.67 ABC";
+            var n = new Lexer(s);
+
+
+
+            var res = n.returnlist;
+            Assert.AreEqual(4, res.Count);
+            Assert.AreEqual(LexedTokenType.NUMBER, res[0].TokenType);
+            Assert.AreEqual("12345.67", res[0].TokenText);
+
+
+        }
+
+        [TestMethod]
+        public void Lex_Number_TrailingDecimalFailsWithException()
+        {
+            var s = "1234567. ABC";
+            Assert.ThrowsException<ParserException>(() =>
+            {
+                 var n = new Lexer(s);
+            });
+
+        }
+
+        [TestMethod]
+        public void Lex_Number_2DotsInNumberFail()
+        {
+            var s = "12345.67.4 ABC";
+           
+            Assert.ThrowsException<ParserException>(() =>
+            {
+                var n = new Lexer(s);
+            });
+
+        }
+
+        [TestMethod]
+        public void Lex_Number_CharInNumberFails()
+        {
+            var s = "12345.67ABC";
+            Assert.ThrowsException<ParserException>(() =>
+            {
+                var n = new Lexer(s);
+            });
+
+        }
     }
 }

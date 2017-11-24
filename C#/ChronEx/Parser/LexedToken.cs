@@ -11,7 +11,10 @@ namespace ChronEx.Parser
         {
             {' ',LexedTokenType.WHITESPACE },
             {'\t',LexedTokenType.TAB },
-            {'!',LexedTokenType.EXCLAMATION}
+            {'!',LexedTokenType.EXCLAMATION},
+            {'{',LexedTokenType.OPENCURLY },
+            {'}',LexedTokenType.CLOSECURLY },
+            {',',LexedTokenType.COMMA }
         };
 
         public LexedToken(LexedTokenType TokenType,string TokenText,int LineNumber,int Position)
@@ -49,6 +52,10 @@ namespace ChronEx.Parser
         TAB,
         EOF,
         EXCLAMATION,
-        STATEMENTEND
+        STATEMENTEND,
+        OPENCURLY,
+        CLOSECURLY,
+        COMMA,
+        NUMBER
     }
 }
