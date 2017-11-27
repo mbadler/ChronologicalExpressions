@@ -7,7 +7,7 @@ A Event Pattern Matching language
 
 ## Releases
 
-C# reference implementation 0.3.1 (Matches function and Pattern Expression Query Editor) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
+C# reference implementation 0.4.0 (Symbolic Quantifiers) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
 
 ### ChronExQuery  - _Pattern Expression Querying Editor_
 
