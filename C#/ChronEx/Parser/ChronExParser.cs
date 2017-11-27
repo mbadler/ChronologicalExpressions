@@ -43,8 +43,6 @@ namespace ChronEx.Parser
                 //this is the element that will be added to the tree
                 //we will create this based ont he values we find in the stream and wrap /unwrap as needed based on what we find
                 Element CurrentElement = null;
-
-                bool HasNegations = false;
                 //we will keep track of the token index for validation
                 var tokenindex = 0;
 
@@ -63,7 +61,7 @@ namespace ChronEx.Parser
                                 }
                                 if (token.TokenText == ".")
                                 {
-                                    tempElem = new dotSelector();
+                                    tempElem = new DotSelector();
                                 }
                                 else
                                 {
@@ -73,7 +71,7 @@ namespace ChronEx.Parser
                                     };
                                 }
 
-                                CurrentElement = AddTempElemToCurrentElement(CurrentElement,tempElem,token);
+                                
                                 break;
                             }
 
@@ -89,7 +87,7 @@ namespace ChronEx.Parser
                                 {
                                     MatchPattern = token.TokenText
                                 };
-                                CurrentElement = AddTempElemToCurrentElement(CurrentElement,tempElem,token);
+                               
                                 break;
                             }
 
@@ -100,7 +98,18 @@ namespace ChronEx.Parser
                                 {
                                     throwParserException(token, "Negation must be the first symbol on a line");
                                 }
-                                CurrentElement = new NegatedElement();
+                                tempElem = new NegatedElement();
+                                break;
+                            }
+                        case LexedTokenType.PLUS:
+                        case LexedTokenType.QUESTIONMARK:
+                        case LexedTokenType.STAR:
+                            {
+                                tempElem = new SymbolQuantifier()
+                                {
+                                    QuantifierSymbol = token.TokenText[0]
+                                };
+
                                 break;
                             }
                         case LexedTokenType.STATEMENTEND:
@@ -111,11 +120,18 @@ namespace ChronEx.Parser
                                     throwParserException(token, "Expecting Selector");
                                 }
                                 p.AddElement(CurrentElement);
+                                CurrentElement = null;
+                                tempElem = null;
                                 break;
 
                             }
                         default:
                             break;
+                    }
+
+                    if(tempElem != null)
+                    {
+                        CurrentElement = tempElem.ReturnParseTreeFromExistingElement(CurrentElement);
                     }
                 }
                 

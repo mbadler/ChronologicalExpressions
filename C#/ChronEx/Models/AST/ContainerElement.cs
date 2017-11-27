@@ -8,4 +8,10 @@ using System;
 public abstract class ContainerElement : Element
 {
     public Element ContainedElement { get; set; }
+
+    //statndard implementation just assigns it to ContainedElement
+    internal virtual void AddContainedElement(Element existingElement)
+    {
+        ContainedElement = existingElement;
+    }
 }

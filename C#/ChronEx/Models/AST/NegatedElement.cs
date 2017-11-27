@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChronEx.Parser;
+using ChronEx.Processor;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,30 +8,36 @@ namespace ChronEx.Models.AST
 {
     public class NegatedElement: ContainerElement
     {
-       
-
-        internal override IsMatchResults IsMatch(IChronologicalEvent chronevent)
+        public override Element ReturnParseTreeFromExistingElement(Element ExisitngElement)
         {
-            switch (ContainedElement.IsMatch(chronevent))
+            //for now - negation are always the first on the list so just return my self
+            return this;
+        }
+
+        internal override IsMatchResult IsMatch(IChronologicalEvent chronevent, Tracker Tracker)
+        {
+            switch (ContainedElement.IsMatch(chronevent, Tracker))
             {
-                case IsMatchResults.IsMatch:
+                case Processor.IsMatchResult.IsMatch:
                     {
-                        return IsMatchResults.IsNotMatch;
+                        return Processor.IsMatchResult.IsNotMatch;
                          
                     }
-                case IsMatchResults.IsNotMatch:
+                case Processor.IsMatchResult.IsNotMatch:
                     {
-                        return IsMatchResults.IsMatch;
+                        return Processor.IsMatchResult.IsMatch;
                     }
 
-                case IsMatchResults.Continue:
+                case Processor.IsMatchResult.Continue:
                     {
-                        return IsMatchResults.Continue;
+                        return Processor.IsMatchResult.Continue;
                     }
                 default:
-                    return IsMatchResults.Continue;
+                    return Processor.IsMatchResult.Continue;
             }
         }
+
+        
 
         internal override bool IsPotentialMatch(IChronologicalEvent chronevent)
         {

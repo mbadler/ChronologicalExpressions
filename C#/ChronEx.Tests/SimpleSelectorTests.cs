@@ -151,14 +151,11 @@ ItemPage.Load,10/17/2017 0:32
 ItemPage.Render,10/17/2017 0:33
 Session.End,10/12/2017 0:34"
 ;
-            return s.Split('\n').Select(x => x.Split(','))
-                .Select(y => new ChronologicalEvent()
-            {
-                EventName = y[0],
-                EventDateTime = DateTime.Parse(y[1])
-            });
+            return TestUtils.SplitLogsStringsIntoChronEventList(s);
 
         }
+
+        
     }
 }
 

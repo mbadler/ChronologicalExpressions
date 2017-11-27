@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChronEx.Parser
+namespace ChronEx.Processor
 {
     public class ChronExMatch
     {

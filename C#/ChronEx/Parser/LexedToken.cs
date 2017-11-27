@@ -14,7 +14,10 @@ namespace ChronEx.Parser
             {'!',LexedTokenType.EXCLAMATION},
             {'{',LexedTokenType.OPENCURLY },
             {'}',LexedTokenType.CLOSECURLY },
-            {',',LexedTokenType.COMMA }
+            {',',LexedTokenType.COMMA },
+            {'+',LexedTokenType.PLUS },
+            {'*',LexedTokenType.STAR },
+            {'?',LexedTokenType.QUESTIONMARK}
         };
 
         public LexedToken(LexedTokenType TokenType,string TokenText,int LineNumber,int Position)
@@ -56,6 +59,9 @@ namespace ChronEx.Parser
         OPENCURLY,
         CLOSECURLY,
         COMMA,
-        NUMBER
+        NUMBER,
+        PLUS,
+        STAR,
+        QUESTIONMARK
     }
 }

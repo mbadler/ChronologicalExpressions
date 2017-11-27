@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace ChronEx.Parser
+namespace ChronEx.Processor
 {
     
     public class Runner
@@ -100,7 +100,7 @@ namespace ChronEx.Parser
                     // since this is only the match function
                     // if any of the trackers have a positive result - return right away
                     var m = trk.ProcessEvent(even,Store);
-                    if (m == TrackerProcessResult.IsMatch)
+                    if (m == Processor.IsMatchResult.IsMatch)
                     {
                         if (ShortCircuit)
                         {
@@ -118,7 +118,7 @@ namespace ChronEx.Parser
                         
                     }
                     //if no match then add it to the remove list
-                    if (m == TrackerProcessResult.IsNotMatch)
+                    if (m == Processor.IsMatchResult.IsNotMatch)
                     {
                         _removeList.Add(trk);
                     }
