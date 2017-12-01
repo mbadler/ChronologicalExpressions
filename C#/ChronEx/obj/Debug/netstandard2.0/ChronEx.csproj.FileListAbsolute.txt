@@ -1,9 +1,0 @@
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\bin\Debug\netstandard2.0\ChronEx.deps.json
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\bin\Debug\netstandard2.0\ChronEx.dll
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\bin\Debug\netstandard2.0\ChronEx.pdb
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.csprojResolveAssemblyReference.cache
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.csproj.CoreCompileInputs.cache
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.AssemblyInfoInputs.cache
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.AssemblyInfo.cs
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.dll
-C:\proj\Repos\ChronologicalExpressions\C#\ChronEx\obj\Debug\netstandard2.0\ChronEx.pdb
