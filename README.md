@@ -3,15 +3,22 @@ A Event Pattern Matching language
 
 [ChronEx Pattern Language Specification](https://github.com/mbadler/ChronologicalExpressions/wiki/ChronEx-Pattern-Specification)
 
-[Reference Implementation Development Roadmap](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map)
+## Reference Implementations
 
-## Releases
+There are 2 reference implementations
 
-C# reference implementation 0.4.0 (Symbolic Quantifiers) has been released. See [here](https://github.com/mbadler/ChronologicalExpressions/wiki/Development-Road-Map) for more details 
+__C#__ [https://github.com/mbadler/ChronEx-CSharp]
+
+Last Release: 0.5.0 - Non Capturing Selector
+
+__Python__ [https://github.com/mbadler/ChronEx-Python]
+
+Last Release: None Yet
+
 
 ### ChronExQuery  - _Pattern Expression Querying Editor_
 
-There is a small simple pattern expression query editor application included in this repository based on the c# reference implementation. It allows you to paste a dataset and then query patterns against the data. [Direct link](https://github.com/mbadler/ChronologicalExpressions/tree/master/C%23/ChronExQuery) to the application.
+There is a small simple pattern expression query editor application included in the C# repository based on the c# reference implementation. It allows you to paste a dataset and then query patterns against the data. [Direct link](https://github.com/mbadler/ChronEx-CSharp/tree/master/ChronExQuery) to the application.
 
 Currently included with query editor is a dataset featuring a lifecycle events log of daily actions of a person. The log has been adapted from https://doi.org/10.4121/uuid:01eaba9f-d3ed-4e04-9945-b8b302764176
 
