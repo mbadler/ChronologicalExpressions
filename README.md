@@ -9,7 +9,7 @@ There are 2 reference implementations
 
 __C#__ [https://github.com/mbadler/ChronEx-CSharp]
 
-Last Release: 0.5.0 - Non Capturing Selector
+Last Release: 0.0.6 Numeric Quantifiers
 
 __Python__ [https://github.com/mbadler/ChronEx-Python]
 
